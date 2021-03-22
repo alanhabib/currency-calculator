@@ -8,9 +8,6 @@ In the project directory, you can run:
 
 # Start
 
-Clone the project
-Use either npm or yarn to install the project
-
 ### `yarn start`
 
 ### `npm start`

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CurrencyInput from "../CurrencyInput/CurrencyInput";
+import CurrencyInput from "../CurrencyInput";
 import SwapHorizIcon from "@material-ui/icons/SwapHoriz";
 import EuroIcon from "@material-ui/icons/Euro";
 import { usePrevious } from "../../utils/hooks";
