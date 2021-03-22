@@ -6,7 +6,7 @@ import { usePrevious } from "../../utils/hooks";
 import "./CurrencyCalculator.css";
 
 const CURRENCY_URL =
-  "http://data.fix.io/api/latest?access_key=d67af8166bbc4dc681b75242e9a06fd5";
+  "http://data.fixer.io/api/latest?access_key=d67af8166bbc4dc681b75242e9a06fd5";
 
 const CurrencyCalculator = () => {
   const [currencyOption, setCurrencyOption] = useState([]);
@@ -21,6 +21,7 @@ const CurrencyCalculator = () => {
   const prevExchangeRate = usePrevious(exchangeRate);
 
   useEffect(() => {
+    console.log("### PREV 1 ");
     const fetchDataHandler = async () => {
       const res = await fetch(CURRENCY_URL);
       try {
@@ -40,12 +41,14 @@ const CurrencyCalculator = () => {
 
   useEffect(() => {
     if (prevCurrency !== toCurrency) {
+      console.log("### PREV 2");
       const exchangeRateHandler = async () => {
         const res = await fetch(`${CURRENCY_URL}&symbols=${toCurrency}`);
         const data = await res.json();
         setExchangeRate(data.rates[toCurrency]);
       };
       exchangeRateHandler();
+      console.log("### PREV 3");
     }
   }, [toCurrency, prevCurrency]);
 
