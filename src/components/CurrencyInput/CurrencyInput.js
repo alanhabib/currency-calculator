@@ -3,11 +3,10 @@ import "./CurrencyInput.css";
 
 const CurrencyInput = ({
   amount,
-  currencyOptions,
+  currencyOptions = [],
   selectedCurrency,
   onChangeAmount,
   onChangeCurrency,
-  options,
 }) => {
   return (
     <div className="currencyInputWrapper">
@@ -17,7 +16,7 @@ const CurrencyInput = ({
         value={amount}
         onChange={onChangeAmount}
       />
-      {options && (
+      {currencyOptions.length && (
         <select value={selectedCurrency} onChange={onChangeCurrency}>
           {currencyOptions?.map((option) => (
             <option key={option} value={option}>

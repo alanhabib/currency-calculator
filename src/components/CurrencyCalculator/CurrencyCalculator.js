@@ -27,7 +27,7 @@ const CurrencyCalculator = () => {
         const currencyData = await res.json();
         const rates = Object.keys(currencyData.rates);
         const firstCurrency = rates[0];
-        setCurrencyOption([...currencyData.base, ...rates]);
+        setCurrencyOption([currencyData.base, ...rates]);
         setFromCurrency(currencyData.base);
         setToCurrency(firstCurrency);
         setExchangeRate(currencyData.rates[firstCurrency]);
@@ -51,7 +51,7 @@ const CurrencyCalculator = () => {
 
   useEffect(() => {
     if (prevExchangeRate !== exchangeRate) {
-      setToAmount(fromAmount * exchangeRate);
+      setToAmount(parseFloat(fromAmount * exchangeRate).toFixed(2));
     }
   }, [exchangeRate]);
 
@@ -72,9 +72,8 @@ const CurrencyCalculator = () => {
       <div className="euroInputWrapper">
         <CurrencyInput
           onChangeAmount={fromAmountChangeHandler}
-          currencyOptions={currencyOption}
-          options={false}
-          onChangeCurrency={fromCurrency}
+          currencyOptions={0}
+          onChangeCurrency={(e) => setFromCurrency(e.target.value)}
           selectedCurrency={fromCurrency}
           amount={fromAmount}
         />
@@ -82,7 +81,6 @@ const CurrencyCalculator = () => {
       </div>
       <SwapHorizIcon />
       <CurrencyInput
-        options={true}
         onChangeAmount={toAmountChangeHandler}
         currencyOptions={currencyOption}
         onChangeCurrency={(e) => setToCurrency(e.target.value)}
