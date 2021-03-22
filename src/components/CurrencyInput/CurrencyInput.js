@@ -18,8 +18,8 @@ const CurrencyInput = ({
       />
       {currencyOptions.length && (
         <select value={selectedCurrency} onChange={onChangeCurrency}>
-          {currencyOptions?.map((option) => (
-            <option key={option} value={option}>
+          {currencyOptions?.map((option, i) => (
+            <option key={i} value={option}>
               {option}
             </option>
           ))}

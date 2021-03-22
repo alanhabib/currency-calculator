@@ -10,7 +10,6 @@ const CURRENCY_URL =
 
 const CurrencyCalculator = () => {
   const [currencyOption, setCurrencyOption] = useState([]);
-  const [fromCurrency, setFromCurrency] = useState("");
   const [toCurrency, setToCurrency] = useState("");
   const [exchangeRate, setExchangeRate] = useState("");
   const [toAmount, setToAmount] = useState(0);
@@ -28,7 +27,6 @@ const CurrencyCalculator = () => {
         const rates = Object.keys(currencyData.rates);
         const firstCurrency = rates[0];
         setCurrencyOption([currencyData.base, ...rates]);
-        setFromCurrency(currencyData.base);
         setToCurrency(firstCurrency);
         setExchangeRate(currencyData.rates[firstCurrency]);
       } catch (error) {
