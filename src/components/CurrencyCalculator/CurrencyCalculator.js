@@ -73,8 +73,6 @@ const CurrencyCalculator = () => {
         <CurrencyInput
           onChangeAmount={fromAmountChangeHandler}
           currencyOptions={0}
-          onChangeCurrency={(e) => setFromCurrency(e.target.value)}
-          selectedCurrency={fromCurrency}
           amount={fromAmount}
         />
         <EuroIcon className="euroIcon" />
