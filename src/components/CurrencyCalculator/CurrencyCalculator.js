@@ -21,10 +21,9 @@ const CurrencyCalculator = () => {
   const prevExchangeRate = usePrevious(exchangeRate);
 
   useEffect(() => {
-    console.log("### PREV 1 ");
     const fetchDataHandler = async () => {
-      const res = await fetch(CURRENCY_URL);
       try {
+        const res = await fetch(CURRENCY_URL);
         const currencyData = await res.json();
         const rates = Object.keys(currencyData.rates);
         const firstCurrency = rates[0];
@@ -41,14 +40,12 @@ const CurrencyCalculator = () => {
 
   useEffect(() => {
     if (prevCurrency !== toCurrency) {
-      console.log("### PREV 2");
       const exchangeRateHandler = async () => {
         const res = await fetch(`${CURRENCY_URL}&symbols=${toCurrency}`);
         const data = await res.json();
         setExchangeRate(data.rates[toCurrency]);
       };
       exchangeRateHandler();
-      console.log("### PREV 3");
     }
   }, [toCurrency, prevCurrency]);
 
