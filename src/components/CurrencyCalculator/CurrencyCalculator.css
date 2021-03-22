@@ -1,0 +1,9 @@
+.euroInputWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.euroIcon {
+  margin-left: 6px;
+}
